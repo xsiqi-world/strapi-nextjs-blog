@@ -102,15 +102,28 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: "aws-s3",
+      // provider: "aws-s3",
+      // providerOptions: {
+      //   s3Options: {
+      //     accessKeyId: env("AWS_ACCESS_KEY_ID", ""),
+      //     secretAccessKey: env("AWS_SECRET_ACCESS_KEY", ""),
+      //     region: env("AWS_REGION", "us-east-1"),
+      //     params: {
+      //       Bucket: env("AWS_BUCKET"),
+      //     }
+      //   },
+      // },
+
+      provider: "strapi-provider-upload-tencent-cloud-storage",
       providerOptions: {
-        accessKeyId: env("AWS_ACCESS_KEY_ID"),
-        secretAccessKey: env("AWS_SECRET_ACCESS_KEY"),
-        region: env("AWS_REGION"),
-        params: {
-          Bucket: env("AWS_BUCKET"),
-        },
+        SecretId: env("COS_SECRET_ID"),
+        SecretKey: env("COS_SECRET_KEY"),
+        Region: env("COS_REGION"),
+        Bucket: env("COS_BUCKET"),
+        BasePath: env("COS_BASE_PATH"),
+        BaseOrigin: env("COS_BASE_ORIGIN"),
       },
+
       actionOptions: {
         upload: {},
         uploadStream: {},

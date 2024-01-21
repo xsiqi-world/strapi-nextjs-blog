@@ -31,3 +31,5 @@ build
 
 #images
 public/uploads
+
+.yarnrc
